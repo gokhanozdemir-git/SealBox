@@ -1,6 +1,7 @@
 """CLI: help, version, language, typo suggestions, init and status."""
 
 import json
+import re
 
 import pytest
 
@@ -63,7 +64,8 @@ def test_help_command_shows_examples_and_turkish_metavars(capsys):
     code, out, _ = run(capsys, "help", "seal")
     assert code == 0
     assert "Kullanım: sealbox seal" in out and "Örnekler:" in out
-    assert "--workspace, -w KLASÖR" in out
+    # Python 3.13 prints "--workspace, -w KLASÖR"; 3.12 repeats the metavar per flag.
+    assert re.search(r"--workspace[ ,].*-w KLASÖR", out)
     _, out, _ = run(capsys, "help", "recovery", "restore")
     assert "--kit DOSYA" in out
 
