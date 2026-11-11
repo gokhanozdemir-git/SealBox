@@ -77,11 +77,11 @@ jobs:
       - run: npm ci
       - run: npx vsce package --out sealbox.vsix
       - name: Publish to the VS Code Marketplace
-        run: npx vsce publish --packagePath sealbox.vsix
+        run: npx vsce publish --packagePath sealbox.vsix --skip-duplicate
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
       - name: Publish to Open VSX
-        run: npx ovsx publish sealbox.vsix
+        run: npx ovsx publish sealbox.vsix --skip-duplicate
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
       - uses: actions/upload-artifact@v4
