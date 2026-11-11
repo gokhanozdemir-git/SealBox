@@ -5,7 +5,7 @@ are all welcome. For security issues, please follow [SECURITY.md](SECURITY.md) i
 
 ## Development setup
 
-You need Python 3.12+, Node.js 20+ and git.
+You need Python 3.12+, Node.js 22+ and git.
 
 ```sh
 git clone https://github.com/gokhanozdemir-git/SealBox.git

@@ -45,6 +45,8 @@ classifiers = [
 ]
 dependencies = [
     "cryptography>=44",
+    # Needed by cryptography to open passphrase-protected OpenSSH private keys.
+    "bcrypt>=4",
     "pydantic>=2.6,<3",
     "shamir-mnemonic>=0.3,<0.4",
     "keyring>=24",
