@@ -1,0 +1,29 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Node / VS Code extension
+node_modules/
+*.vsix
+.vscode-test/
+
+# Local secrets and state
+.env
+.env.*
+!.env.example
+!examples/demo_project/.env
+*.share
+*.sealkit
+# A project's .sealbox/ folder IS meant to be committed (encrypted vault + team.json, for
+# sharing); its own .gitignore keeps backups and locks out. In this repository, only the demo
+# project may have one, and it should not be committed.
+examples/**/.sealbox/
+examples/**/.env.sealed

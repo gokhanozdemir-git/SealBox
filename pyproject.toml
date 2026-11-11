@@ -1,0 +1,112 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sealbox"
+dynamic = ["version"]
+description = "Keep passwords, API keys and personal data out of your source files, so AI coding agents never see them."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "FSL-1.1-ALv2"
+license-files = ["LICENSE"]
+authors = [{ name = "Gökhan Özdemir" }]
+keywords = [
+    "secrets",
+    "secret-scanner",
+    "vault",
+    "encryption",
+    "dotenv",
+    "credentials",
+    "api-keys",
+    "pii",
+    "security",
+    "ai-agents",
+    "copilot",
+    "claude-code",
+    "cursor",
+    "pre-commit",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development",
+    "Typing :: Typed",
+]
+dependencies = [
+    "cryptography>=44",
+    "pydantic>=2.6,<3",
+    "shamir-mnemonic>=0.3,<0.4",
+    "keyring>=24",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.1.1",
+    "hypothesis==6.170.12",
+    "ruff==0.17.3",
+    "mypy==2.4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/gokhanozdemir-git/SealBox"
+Documentation = "https://github.com/gokhanozdemir-git/SealBox#readme"
+Source = "https://github.com/gokhanozdemir-git/SealBox"
+Issues = "https://github.com/gokhanozdemir-git/SealBox/issues"
+Changelog = "https://github.com/gokhanozdemir-git/SealBox/blob/main/CHANGELOG.md"
+"VS Code Extension" = "https://marketplace.visualstudio.com/items?itemName=gokhanozdemir.sealbox"
+
+[project.scripts]
+sealbox = "sealbox.__main__:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "sealbox.__version__" }
+
+[tool.setuptools.package-data]
+sealbox = ["py.typed"]
+
+[tool.setuptools.packages.find]
+include = ["sealbox*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF"]
+ignore = ["S101", "RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S105", "S106", "S108", "RUF012"]
+# Category names (PASSWORD, TOKEN) are enum labels, not secrets.
+"sealbox/models/enums.py" = ["S105"]
+# Translation table: one "Turkish": "English" pair per line; wrapping would hurt readability.
+"sealbox/i18n_en.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_ignores = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["shamir_mnemonic.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+disallow_untyped_calls = false

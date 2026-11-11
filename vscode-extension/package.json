@@ -1,0 +1,245 @@
+{
+  "name": "sealbox",
+  "displayName": "SealBox: Secret Vault for AI Coding",
+  "description": "%description%",
+  "version": "0.3.0",
+  "publisher": "gokhanozdemir",
+  "author": {
+    "name": "Gökhan Özdemir"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#0B0F0D",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/gokhanozdemir-git/SealBox#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gokhanozdemir-git/SealBox.git",
+    "directory": "vscode-extension"
+  },
+  "bugs": {
+    "url": "https://github.com/gokhanozdemir-git/SealBox/issues"
+  },
+  "qna": "https://github.com/gokhanozdemir-git/SealBox/discussions",
+  "keywords": [
+    "secrets",
+    "secret scanner",
+    "secret detection",
+    "api key",
+    "credentials",
+    "password",
+    "vault",
+    "dotenv",
+    "env",
+    "encryption",
+    "security",
+    "privacy",
+    "pii",
+    "ai agent",
+    "copilot",
+    "claude code",
+    "cursor",
+    "pre-commit"
+  ],
+  "categories": [
+    "Linters",
+    "AI",
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "%capabilities.untrusted%"
+    },
+    "virtualWorkspaces": false
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "l10n": "./l10n",
+  "contributes": {
+    "commands": [
+      {
+        "command": "sealbox.menu",
+        "title": "%command.menu%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.checkProject",
+        "title": "%command.checkProject%",
+        "category": "SealBox",
+        "icon": "$(search)"
+      },
+      {
+        "command": "sealbox.sealFile",
+        "title": "%command.sealFile%",
+        "category": "SealBox",
+        "icon": "$(lock)"
+      },
+      {
+        "command": "sealbox.sealProject",
+        "title": "%command.sealProject%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.exec",
+        "title": "%command.exec%",
+        "category": "SealBox",
+        "icon": "$(play)"
+      },
+      {
+        "command": "sealbox.reveal",
+        "title": "%command.reveal%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.expose",
+        "title": "%command.expose%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.prune",
+        "title": "%command.prune%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.teamAdd",
+        "title": "%command.teamAdd%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.recoverySetup",
+        "title": "%command.recoverySetup%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.recoveryRestore",
+        "title": "%command.recoveryRestore%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.manualHelp",
+        "title": "%command.manualHelp%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.history",
+        "title": "%command.history%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.hookInstall",
+        "title": "%command.hookInstall%",
+        "category": "SealBox"
+      },
+      {
+        "command": "sealbox.checkInstallation",
+        "title": "%command.checkInstallation%",
+        "category": "SealBox"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "sealbox.sealFile",
+          "when": "resourceScheme == file",
+          "group": "sealbox@1"
+        },
+        {
+          "command": "sealbox.exec",
+          "when": "resourceScheme == file",
+          "group": "sealbox@2"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "sealbox.sealFile",
+          "when": "resourceScheme == file && !explorerResourceIsFolder",
+          "group": "sealbox@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "SealBox",
+      "properties": {
+        "sealbox.executable": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%config.executable%"
+        },
+        "sealbox.checkOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.checkOnSave%"
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "sealbox.getStarted",
+        "title": "%walkthrough.title%",
+        "description": "%walkthrough.description%",
+        "steps": [
+          {
+            "id": "install",
+            "title": "%walkthrough.install.title%",
+            "description": "%walkthrough.install.description%",
+            "media": { "markdown": "walkthrough/install.md" },
+            "completionEvents": ["onCommand:sealbox.checkInstallation"]
+          },
+          {
+            "id": "scan",
+            "title": "%walkthrough.scan.title%",
+            "description": "%walkthrough.scan.description%",
+            "media": { "markdown": "walkthrough/scan.md" },
+            "completionEvents": ["onCommand:sealbox.checkProject"]
+          },
+          {
+            "id": "seal",
+            "title": "%walkthrough.seal.title%",
+            "description": "%walkthrough.seal.description%",
+            "media": { "markdown": "walkthrough/seal.md" },
+            "completionEvents": ["onCommand:sealbox.sealProject", "onCommand:sealbox.sealFile"]
+          },
+          {
+            "id": "run",
+            "title": "%walkthrough.run.title%",
+            "description": "%walkthrough.run.description%",
+            "media": { "markdown": "walkthrough/run.md" },
+            "completionEvents": ["onCommand:sealbox.exec"]
+          },
+          {
+            "id": "recovery",
+            "title": "%walkthrough.recovery.title%",
+            "description": "%walkthrough.recovery.description%",
+            "media": { "markdown": "walkthrough/recovery.md" },
+            "completionEvents": ["onCommand:sealbox.recoverySetup"]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "test": "tsc -p . && node --test out/test/*.test.js",
+    "package": "vsce package",
+    "publish:marketplace": "vsce publish",
+    "publish:openvsx": "ovsx publish"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.0",
+    "@types/vscode": "1.93.0",
+    "@vscode/test-electron": "^2.4.1",
+    "@vscode/vsce": "3.2.1",
+    "ovsx": "0.10.1",
+    "typescript": "5.6.3"
+  }
+}

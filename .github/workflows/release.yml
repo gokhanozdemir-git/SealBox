@@ -1,0 +1,110 @@
+name: release
+
+# Push a tag such as v0.3.0 to publish that version everywhere.
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    uses: ./.github/workflows/ci.yml
+
+  check-version:
+    name: Check versions match the tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare tag, engine and extension versions
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          engine=$(python3 -c "import re;print(re.search(r'__version__ = \"(.+)\"', open('sealbox/__init__.py').read())[1])")
+          extension=$(node -p "require('./vscode-extension/package.json').version")
+          echo "tag=$tag engine=$engine extension=$extension"
+          test "$tag" = "$engine" && test "$tag" = "$extension"
+
+  build-engine:
+    name: Build Python package
+    needs: [test, check-version]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m pip install build twine
+      - run: python -m build
+      - run: python -m twine check --strict dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+
+  publish-pypi:
+    name: Publish to PyPI
+    needs: build-engine
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/sealbox/
+    permissions:
+      id-token: write # trusted publishing: no API token stored in GitHub
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  publish-extension:
+    name: Publish VS Code extension
+    # The extension needs the engine, so it goes out only after PyPI succeeded.
+    needs: publish-pypi
+    runs-on: ubuntu-latest
+    environment: marketplace
+    defaults:
+      run:
+        working-directory: vscode-extension
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: vscode-extension/package-lock.json
+      - run: npm ci
+      - run: npx vsce package --out sealbox.vsix
+      - name: Publish to the VS Code Marketplace
+        run: npx vsce publish --packagePath sealbox.vsix
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      - name: Publish to Open VSX
+        run: npx ovsx publish sealbox.vsix
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: vscode-extension/sealbox.vsix
+
+  github-release:
+    name: Create GitHub release
+    needs: [publish-pypi, publish-extension]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+      - name: Create the release with the package files attached
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "SealBox $GITHUB_REF_NAME" \
+            --notes "See [CHANGELOG.md](https://github.com/${GITHUB_REPOSITORY}/blob/main/CHANGELOG.md) for details." \
+            artifacts/python-dist/* artifacts/vsix/sealbox.vsix
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -1,0 +1,22 @@
+# Copy this file to your project root as sealbox.toml (or pass it with --config).
+# NEVER put a real secret in this file.
+
+# Files larger than this are skipped (bytes).
+max_file_bytes = 524288
+
+# Explicitly include paths that are excluded by default (.env, *.pem, .git/** ...).
+explicit_includes = [".env.example"]
+
+[scanner]
+# Names cannot be detected reliably with regex: list the names to redact explicitly.
+person_names = []
+# Exact values to ignore, to silence false positives.
+allow_values = []
+# Built-in rule IDs to turn off, e.g. ["phone_tr", "credit_card"].
+disabled_rules = []
+
+# [[scanner.custom_rules]]
+# id = "project-code"
+# category = "CUSTOM"
+# pattern = 'PRJ-\d{6}'
+# file_globs = ["*.py", "*.md"]
