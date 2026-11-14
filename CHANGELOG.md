@@ -8,7 +8,10 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.3.0] - 2026-11-12
+- Project website at [seal-box.dev](https://seal-box.dev), linked from PyPI, the VS Code
+  Marketplace, Open VSX and the README.
+
+## [0.3.1] - 2026-11-15
 
 First public release.
 

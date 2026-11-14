@@ -14,10 +14,16 @@
   <a href="https://marketplace.visualstudio.com/items?itemName=gokhanozdemir.sealbox"><img src="https://img.shields.io/visual-studio-marketplace/v/gokhanozdemir.sealbox?label=VS%20Code%20Marketplace&color=3E9E68" alt="VS Code Marketplace"></a>
   <a href="https://open-vsx.org/extension/gokhanozdemir/sealbox"><img src="https://img.shields.io/open-vsx/v/gokhanozdemir/sealbox?label=Open%20VSX&color=3E9E68" alt="Open VSX"></a>
   <a href="https://github.com/gokhanozdemir-git/SealBox/actions/workflows/ci.yml"><img src="https://github.com/gokhanozdemir-git/SealBox/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-FSL--1.1--ALv2-blue" alt="License: FSL-1.1-ALv2"></a>
+  <a href="https://github.com/gokhanozdemir-git/SealBox/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-FSL--1.1--ALv2-blue" alt="License: FSL-1.1-ALv2"></a>
 </p>
 
-<p align="center"><b>English</b> · <a href="README.tr.md">Türkçe</a></p>
+<p align="center">
+  <a href="https://seal-box.dev"><b>seal-box.dev</b></a> ·
+  <a href="https://seal-box.dev/learn.html">Guide</a> ·
+  <a href="https://seal-box.dev/docs.html">Docs</a>
+</p>
+
+<p align="center"><b>English</b> · <a href="https://github.com/gokhanozdemir-git/SealBox/blob/main/README.tr.md">Türkçe</a></p>
 
 ---
 
@@ -215,7 +221,7 @@ against accidents, not a policy: `git commit --no-verify` skips it.
 
 ## Configuration
 
-Copy [`sealbox.example.toml`](sealbox.example.toml) to your project root as `sealbox.toml`
+Copy [`sealbox.example.toml`](https://github.com/gokhanozdemir-git/SealBox/blob/main/sealbox.example.toml) to your project root as `sealbox.toml`
 (or pass `--config`).
 
 | Setting | Default | Description |
@@ -249,16 +255,16 @@ or messages of third-party exceptions (type name only).
 - Removing a teammate rotates the key, but they may remember values they have seen;
   `team remove` lists them so you can rotate them.
 
-Found a vulnerability? Please follow [SECURITY.md](SECURITY.md) instead of opening an issue.
+Found a vulnerability? Please follow [SECURITY.md](https://github.com/gokhanozdemir-git/SealBox/blob/main/SECURITY.md) instead of opening an issue.
 
 ## Contributing
 
-Bug reports and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the
+Bug reports and pull requests are welcome. See [CONTRIBUTING.md](https://github.com/gokhanozdemir-git/SealBox/blob/main/CONTRIBUTING.md) for the
 development setup, the project layout and how to add a translation.
 
 ## License
 
-SealBox is licensed under the [Functional Source License, Version 1.1, ALv2 Future License](LICENSE)
+SealBox is licensed under the [Functional Source License, Version 1.1, ALv2 Future License](https://github.com/gokhanozdemir-git/SealBox/blob/main/LICENSE)
 (FSL-1.1-ALv2). You may use, modify and redistribute it for any purpose **except offering a
 competing commercial product or service**. Internal use at your company, education and research
 are explicitly allowed. Two years after each release, that release also becomes available under

@@ -2,7 +2,7 @@
   "name": "sealbox",
   "displayName": "SealBox: Secret Vault for AI Coding",
   "description": "%description%",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "publisher": "gokhanozdemir",
   "author": {
     "name": "Gökhan Özdemir"
@@ -13,7 +13,7 @@
     "color": "#0B0F0D",
     "theme": "dark"
   },
-  "homepage": "https://github.com/gokhanozdemir-git/SealBox#readme",
+  "homepage": "https://seal-box.dev",
   "repository": {
     "type": "git",
     "url": "https://github.com/gokhanozdemir-git/SealBox.git",
@@ -190,36 +190,57 @@
             "id": "install",
             "title": "%walkthrough.install.title%",
             "description": "%walkthrough.install.description%",
-            "media": { "markdown": "walkthrough/install.md" },
-            "completionEvents": ["onCommand:sealbox.checkInstallation"]
+            "media": {
+              "markdown": "walkthrough/install.md"
+            },
+            "completionEvents": [
+              "onCommand:sealbox.checkInstallation"
+            ]
           },
           {
             "id": "scan",
             "title": "%walkthrough.scan.title%",
             "description": "%walkthrough.scan.description%",
-            "media": { "markdown": "walkthrough/scan.md" },
-            "completionEvents": ["onCommand:sealbox.checkProject"]
+            "media": {
+              "markdown": "walkthrough/scan.md"
+            },
+            "completionEvents": [
+              "onCommand:sealbox.checkProject"
+            ]
           },
           {
             "id": "seal",
             "title": "%walkthrough.seal.title%",
             "description": "%walkthrough.seal.description%",
-            "media": { "markdown": "walkthrough/seal.md" },
-            "completionEvents": ["onCommand:sealbox.sealProject", "onCommand:sealbox.sealFile"]
+            "media": {
+              "markdown": "walkthrough/seal.md"
+            },
+            "completionEvents": [
+              "onCommand:sealbox.sealProject",
+              "onCommand:sealbox.sealFile"
+            ]
           },
           {
             "id": "run",
             "title": "%walkthrough.run.title%",
             "description": "%walkthrough.run.description%",
-            "media": { "markdown": "walkthrough/run.md" },
-            "completionEvents": ["onCommand:sealbox.exec"]
+            "media": {
+              "markdown": "walkthrough/run.md"
+            },
+            "completionEvents": [
+              "onCommand:sealbox.exec"
+            ]
           },
           {
             "id": "recovery",
             "title": "%walkthrough.recovery.title%",
             "description": "%walkthrough.recovery.description%",
-            "media": { "markdown": "walkthrough/recovery.md" },
-            "completionEvents": ["onCommand:sealbox.recoverySetup"]
+            "media": {
+              "markdown": "walkthrough/recovery.md"
+            },
+            "completionEvents": [
+              "onCommand:sealbox.recoverySetup"
+            ]
           }
         ]
       }

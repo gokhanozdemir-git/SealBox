@@ -8,6 +8,12 @@
   <strong>Parolaları, API anahtarlarını ve kişisel verileri kaynak dosyalarınızdan çıkarır;<br>yapay zekâ kodlama ajanları onları hiç görmez.</strong>
 </p>
 
+<p align="center">
+  <a href="https://seal-box.dev/tr/"><b>seal-box.dev</b></a> ·
+  <a href="https://seal-box.dev/tr/learn.html">Rehber</a> ·
+  <a href="https://seal-box.dev/tr/docs.html">Dokümantasyon</a>
+</p>
+
 <p align="center"><a href="README.md">English</a> · <b>Türkçe</b></p>
 
 ---

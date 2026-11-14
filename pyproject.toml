@@ -61,12 +61,13 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/gokhanozdemir-git/SealBox"
-Documentation = "https://github.com/gokhanozdemir-git/SealBox#readme"
+Homepage = "https://seal-box.dev"
+Documentation = "https://seal-box.dev/docs.html"
 Source = "https://github.com/gokhanozdemir-git/SealBox"
 Issues = "https://github.com/gokhanozdemir-git/SealBox/issues"
 Changelog = "https://github.com/gokhanozdemir-git/SealBox/blob/main/CHANGELOG.md"
 "VS Code Extension" = "https://marketplace.visualstudio.com/items?itemName=gokhanozdemir.sealbox"
+"Open VSX" = "https://open-vsx.org/extension/gokhanozdemir/sealbox"
 
 [project.scripts]
 sealbox = "sealbox.__main__:main"

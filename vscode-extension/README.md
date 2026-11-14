@@ -8,6 +8,8 @@ SealBox moves every secret out of your files into an encrypted, per-project vaul
 your code to read an environment variable instead. Your program gets the real values only when
 you run it through SealBox, and only after you approve.
 
+**Website:** [seal-box.dev](https://seal-box.dev) · [Guide](https://seal-box.dev/learn.html) · [Docs](https://seal-box.dev/docs.html)
+
 <!-- Screenshot: docs/images/hero.gif
 ![Sealing a file in VS Code](https://raw.githubusercontent.com/gokhanozdemir-git/SealBox/main/docs/images/hero.gif)
 -->
@@ -99,7 +101,9 @@ The interface follows your VS Code display language: English, or Turkish.
 
 ## Links
 
-- [Source code and full documentation](https://github.com/gokhanozdemir-git/SealBox)
+- [Website and guides: seal-box.dev](https://seal-box.dev)
+- [Command reference](https://seal-box.dev/docs.html)
+- [Source code](https://github.com/gokhanozdemir-git/SealBox)
 - [Python engine on PyPI](https://pypi.org/project/sealbox/)
 - [Report an issue](https://github.com/gokhanozdemir-git/SealBox/issues)
 - [Security policy](https://github.com/gokhanozdemir-git/SealBox/blob/main/SECURITY.md)
