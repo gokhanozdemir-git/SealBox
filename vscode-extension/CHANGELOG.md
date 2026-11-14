@@ -4,6 +4,10 @@ The extension and the [`sealbox` engine](https://pypi.org/project/sealbox/) shar
 numbers. The full history of both lives in the
 [project changelog](https://github.com/gokhanozdemir-git/SealBox/blob/main/CHANGELOG.md).
 
+## 0.3.1 - 2026-11-15
+
+- Homepage link now points to the project website, [seal-box.dev](https://seal-box.dev).
+
 ## 0.3.0 - 2026-11-12
 
 First public release.

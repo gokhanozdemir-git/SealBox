@@ -8,10 +8,15 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-15
+
+### Documentation
+
 - Project website at [seal-box.dev](https://seal-box.dev), linked from PyPI, the VS Code
   Marketplace, Open VSX and the README.
+- Links in the README now work on PyPI too (they pointed to files PyPI does not host).
 
-## [0.3.1] - 2026-11-15
+## [0.3.0] - 2026-11-12
 
 First public release.
 
@@ -43,5 +48,6 @@ First public release.
 - English and Turkish interface.
 - Disabled in untrusted workspaces, because it runs the engine from the workspace's `.venv`.
 
-[Unreleased]: https://github.com/gokhanozdemir-git/SealBox/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/gokhanozdemir-git/SealBox/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/gokhanozdemir-git/SealBox/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/gokhanozdemir-git/SealBox/releases/tag/v0.3.0
